@@ -1,0 +1,15 @@
+## Service is used to setup some kind of network
+## NodePort just used for Development purposes
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port  
+spec:
+  type: NodePort
+  ports:
+    - port: 3050 # Another Pod inside application can access throw this port
+      targetPort: 3000 # Container port target
+      nodePort: 31515 # Development purposes, so we can access this inside a browser
+  selector:
+    component: web # References the key:value pair component:web (label of client-pod)

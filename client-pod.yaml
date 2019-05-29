@@ -1,0 +1,16 @@
+## Pod is used to run a container
+## One Pod can run just tied dependent containers
+## Smallest thing we can deploy
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    component: web
+spec:
+  containers:
+    - name: client
+      image: stephengrider/multi-client # mtsmachado8/multicontainer-client not working for now
+      ports:
+        - containerPort: 3000
